@@ -12,12 +12,16 @@ namespace Barkod_Otomasyon
     public partial class frmMain : DevExpress.XtraEditors.XtraForm
     {
         Islemler islemler = new Islemler();
+        frmIadeMusteriSecim fIadeSecim;
+        frmKullaniciSec fKul;
+        frmBorcMusteriSecim fBorcOn;
+        frmGenelSatislarOn frmOn = new frmGenelSatislarOn();
+
         public frmMain()
         {
             InitializeComponent();
         }
-
-
+        #region Genel Methotlar
 
         private void FiyatGoster()
         {
@@ -60,93 +64,22 @@ namespace Barkod_Otomasyon
             satislarim.MdiParent = this;
             satislarim.Show();
         }
-        frmGenelSatislarOn frmOn = new frmGenelSatislarOn();
-        void frmOn_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (frmOn.DevamEt)
-            {
-                if (frmOn.TumSatislar)
-                {
-                    List<Fi> Liste = islemler.TumFisleriGetir().ToList(); ;
-                    if (Liste.Count > 0)
-                    {
-                        frmGenelSatislar f = new frmGenelSatislar(Liste);
-                        f.MdiParent = this;
-                        f.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hiç satış bulunamadı");
-                    }
-
-
-                }
-                else
-                {
-                    DateTime ilk = frmOn.IlkTarih;
-                    DateTime son = frmOn.SonTarih;
-
-
-                    List<Fi> Liste = islemler.FisleriGetirTariheGore(ilk, son).ToList();
-                    if (Liste.Count > 0)
-                    {
-                        frmGenelSatislar f = new frmGenelSatislar(Liste);
-                        f.MdiParent = this;
-                        f.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hiç satış bulunamadı");
-                    }
-
-                }
-            }
-        }
         private void GenelSatislariGoster()
         {
             frmOn.FormClosed += frmOn_FormClosed;
             frmOn.ShowDialog();
         }
-        frmBorcMusteriSecim fBorcOn;
         private void BorcTahsilat()
         {
             fBorcOn = new frmBorcMusteriSecim();
             fBorcOn.FormClosed += fBorcOn_FormClosed;
             fBorcOn.ShowDialog();
         }
-        void fBorcOn_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (fBorcOn.Devam)
-            {
-                Musteri musteri = fBorcOn.musteri;
-                List<Fi> fisler = islemler.MusteriFisleri(musteri.Id);
-                if (fisler.Count > 0)
-                {
-                    frmBorcMusteri frm = new frmBorcMusteri(musteri);
-                    frm.MdiParent = this;
-                    frm.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Müşterinin hiç fişi bulunamadı");
-                }
-            }
-        }
-        frmIadeMusteriSecim fIadeSecim;
         private void IadeIslemiYap()
         {
             fIadeSecim = new frmIadeMusteriSecim();
             fIadeSecim.FormClosed += fIadeSecim_FormClosed;
             fIadeSecim.ShowDialog();
-        }
-        void fIadeSecim_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (fIadeSecim.Devam)
-            {
-                Musteri musteri = fIadeSecim.musteri;
-                frmIade fIade = new frmIade(musteri);
-                fIade.ShowDialog();
-            }
         }
         private void IadeleriGoster()
         {
@@ -204,6 +137,112 @@ namespace Barkod_Otomasyon
             fTarihSec.FormClosed += fTarihSec_FormClosed;
             fTarihSec.ShowDialog();
         }
+        private void KullaniciBazliAnalizGoster()
+        {
+            fKul = new frmKullaniciSec();
+            fKul.FormClosed += fKul_FormClosed;
+            fKul.ShowDialog();
+        }
+        private void SatisYap()
+        {
+            frmSatis frm = new frmSatis();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+        private void UrunEkle()
+        {
+            frmUrunEkle frm = new frmUrunEkle(null);
+            frm.ShowDialog();
+        }
+        private void YuklenmeDurumu()
+        {
+
+            using (Barkod_Otomasyon.Models.FdkBarkodOtomasyonContext db = new Models.FdkBarkodOtomasyonContext())
+            {
+                User.kullanici = db.Kullanicis.FirstOrDefault(x => x.KullaniciAdi == "dkadem");
+            }
+        }
+
+
+        #endregion
+
+
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            YuklenmeDurumu();
+        }
+
+        #region Eventlar
+
+        void fIadeSecim_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (fIadeSecim.Devam)
+            {
+                Musteri musteri = fIadeSecim.musteri;
+                frmIade fIade = new frmIade(musteri);
+                fIade.ShowDialog();
+            }
+        }
+        void frmOn_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (frmOn.DevamEt)
+            {
+                if (frmOn.TumSatislar)
+                {
+                    List<Fi> Liste = islemler.TumFisleriGetir().ToList(); ;
+                    if (Liste.Count > 0)
+                    {
+                        frmGenelSatislar f = new frmGenelSatislar(Liste);
+                        f.MdiParent = this;
+                        f.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hiç satış bulunamadı");
+                    }
+
+
+                }
+                else
+                {
+                    DateTime ilk = frmOn.IlkTarih;
+                    DateTime son = frmOn.SonTarih;
+
+
+                    List<Fi> Liste = islemler.FisleriGetirTariheGore(ilk, son).ToList();
+                    if (Liste.Count > 0)
+                    {
+                        frmGenelSatislar f = new frmGenelSatislar(Liste);
+                        f.MdiParent = this;
+                        f.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hiç satış bulunamadı");
+                    }
+
+                }
+            }
+        }
+        void fBorcOn_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (fBorcOn.Devam)
+            {
+                Musteri musteri = fBorcOn.musteri;
+                List<Fi> fisler = islemler.MusteriFisleri(musteri.Id);
+                if (fisler.Count > 0)
+                {
+                    frmBorcMusteri frm = new frmBorcMusteri(musteri);
+                    frm.MdiParent = this;
+                    frm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Müşterinin hiç fişi bulunamadı");
+                }
+            }
+        }
         void fTarihSec_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (fTarihSec.DevamEt == true)
@@ -216,13 +255,6 @@ namespace Barkod_Otomasyon
                 fkar.MdiParent = this;
                 fkar.Show();
             }
-        }
-        frmKullaniciSec fKul;
-        private void KullaniciBazliAnalizGoster()
-        {
-            fKul = new frmKullaniciSec();
-            fKul.FormClosed += fKul_FormClosed;
-            fKul.ShowDialog();
         }
         void fKul_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -278,27 +310,10 @@ namespace Barkod_Otomasyon
                 }
             }
         }
-        private void SatisYap()
-        {
-            frmSatis frm = new frmSatis();
-            frm.MdiParent = this;
-            frm.Show();
-        }
-        private void UrunEkle()
-        {
-            frmUrunEkle frm = new frmUrunEkle(null);
-            frm.ShowDialog();
-        }
-        private void YuklenmeDurumu()
-        {
+        #endregion
 
-            using (Barkod_Otomasyon.Models.FdkBarkodOtomasyonContext db = new Models.FdkBarkodOtomasyonContext())
-            {
-                User.kullanici = db.Kullanicis.FirstOrDefault(x => x.KullaniciAdi == "dkadem");
-            }
-        }
+        #region ClickEvent
 
-    
         private void btnFiyatGoster_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FiyatGoster();
@@ -319,10 +334,7 @@ namespace Barkod_Otomasyon
             TedarikcileriGoster();
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            YuklenmeDurumu();
-        }
+
 
         private void btnMusteriler_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -349,28 +361,20 @@ namespace Barkod_Otomasyon
             SatislarimiGoster();
         }
 
-
-
         private void btnGenelSatislar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             GenelSatislariGoster();
         }
-
-
 
         private void btnBorcTahsil_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             BorcTahsilat();
         }
 
-
-
         private void btnIadeIslemi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             IadeIslemiYap();
         }
-
-
 
         private void btnIadeler_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -386,20 +390,19 @@ namespace Barkod_Otomasyon
         {
             AylikAnaliziGoster();
         }
-      
+
         private void btnTarihBazli_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             TarihBazliAnalizGoster();
         }
 
-
-
-      
-
         private void btnKullaniciBazliAnaliz_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             KullaniciBazliAnalizGoster();
         }
+
+        #endregion
+
 
     }
 }
