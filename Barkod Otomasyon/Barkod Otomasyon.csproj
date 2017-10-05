@@ -174,6 +174,12 @@
     <Compile Include="frmKullaniciOlustur.Designer.cs">
       <DependentUpon>frmKullaniciOlustur.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmKullaniciSec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKullaniciSec.Designer.cs">
+      <DependentUpon>frmKullaniciSec.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -306,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmKullaniciOlustur.resx">
       <DependentUpon>frmKullaniciOlustur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKullaniciSec.resx">
+      <DependentUpon>frmKullaniciSec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

@@ -310,6 +310,7 @@
             this.btnKullaniciBazliAnaliz.Id = 21;
             this.btnKullaniciBazliAnaliz.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnKullaniciBazliAnaliz.LargeGlyph")));
             this.btnKullaniciBazliAnaliz.Name = "btnKullaniciBazliAnaliz";
+            this.btnKullaniciBazliAnaliz.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnKullaniciBazliAnaliz_ItemClick);
             // 
             // ribbonPage1
             // 
