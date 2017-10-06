@@ -471,6 +471,10 @@ namespace Barkod_Otomasyon
             }
             return null;
         }
+        public List<Kullanici> KullanicilariGetir()
+        {
+            return db.Kullanicis.ToList();
+        }
         public bool KullaniciEkle(
             string kullaniciadi,
             string parola,
@@ -597,6 +601,20 @@ namespace Barkod_Otomasyon
                 return false;
             }
         }
+
+
+        public Kullanici KullaniciGiris(string kullaniciadi, string parola)
+        {
+            try
+            {
+                Kullanici user = db.Kullanicis.FirstOrDefault(x => x.KullaniciAdi == kullaniciadi && x.Parola == parola);
+                return user;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         #endregion
 
         #region Fiş İşlemleri
@@ -711,7 +729,7 @@ namespace Barkod_Otomasyon
                         FisID = fis.Id,
                         ToplamFiyat = item.toplamFiyat,
                         AdetAlisFiyati = item.adetAlisFiyati,
-                        AdetSatisFiyati =item.urun.SatisFiyati,
+                        AdetSatisFiyati = item.urun.SatisFiyati,
                         UrunID = item.urun.Id
                     };
                     db.Satis.Add(satis);
@@ -859,8 +877,8 @@ namespace Barkod_Otomasyon
                 return karzararlar;
             }
             catch (Exception) { return null; }
-           
-            
+
+
         }
         public List<KarZararUrunu> AySonuSatislariGetir()
         {
@@ -892,17 +910,17 @@ namespace Barkod_Otomasyon
                 return karzararlar;
             }
             catch (Exception) { return null; }
-           
+
         }
 
-        public List<KarZararUrunu> TarihBazlıSatislariGetir(DateTime ilk, DateTime son)
+        public List<KarZararUrunu> TarihBazliSatislariGetir(DateTime ilk, DateTime son)
         {
             try
             {
                 DateTime ilkTarih = new DateTime(ilk.Year, ilk.Month, ilk.Day, 0, 0, 0);
                 DateTime sonTarih = new DateTime(son.Year, son.Month, son.Day, 23, 59, 59);
 
-                List<Fi> liste = db.Fis.Where(x => x.SatisTarihi >= ilkTarih && x.SatisTarihi<=sonTarih).ToList();
+                List<Fi> liste = db.Fis.Where(x => x.SatisTarihi >= ilkTarih && x.SatisTarihi <= sonTarih).ToList();
                 List<Sati> satislar = new List<Sati>();
                 foreach (Fi item in liste)
                 {
@@ -927,7 +945,104 @@ namespace Barkod_Otomasyon
             }
             catch (Exception) { return null; }
         }
+
+        public List<KarZararUrunu> KullaniciBazliSatislariGetir(int? userid, DateTime ilk, DateTime son)
+        {
+            if (userid != null && userid > 0)
+            {
+                Kullanici user = db.Kullanicis.Find(userid);
+                if (user != null)
+                {
+                    if (ilk != null && son != null)
+                    {
+                        List<Fi> fisler = user.Fis.Where(x => x.SatisTarihi >= ilk && x.SatisTarihi <= son).ToList();
+                        List<KarZararUrunu> karzararlar = new List<KarZararUrunu>();
+                        foreach (Fi item in fisler)
+                        {
+                            foreach (Sati _item in item.Satis)
+                            {
+                                decimal toplamMaliyet = (decimal)(_item.Adet * _item.AdetAlisFiyati);
+                                decimal toplamTutar = (decimal)_item.ToplamFiyat;
+                                decimal toplamkar = toplamTutar - toplamMaliyet;
+                                KarZararUrunu kazar = new KarZararUrunu
+                                {
+
+                                    Satis = _item,
+                                    ToplamKar = toplamkar
+                                };
+                                karzararlar.Add(kazar);
+                            }
+                        }
+                        return karzararlar;
+                    }
+                    else
+                    {
+                        List<Fi> fisler = user.Fis.ToList();
+                        List<KarZararUrunu> karzararlar = new List<KarZararUrunu>();
+                        foreach (Fi item in fisler)
+                        {
+                            foreach (Sati _item in item.Satis)
+                            {
+                                decimal toplamMaliyet = (decimal)(_item.Adet * _item.AdetAlisFiyati);
+                                decimal toplamTutar = (decimal)_item.ToplamFiyat;
+                                decimal toplamkar = toplamTutar - toplamMaliyet;
+                                KarZararUrunu kazar = new KarZararUrunu
+                                {
+
+                                    Satis = _item,
+                                    ToplamKar = toplamkar
+                                };
+                                karzararlar.Add(kazar);
+                            }
+                        }
+                        return karzararlar;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            return null;
+        }
+        public List<KarZararUrunu> KullaniciBazliSatislariGetir(int? userid)
+        {
+            if (userid != null && userid > 0)
+            {
+                Kullanici user = db.Kullanicis.Find(userid);
+                if (user != null)
+                {
+                    List<Fi> fisler = user.Fis.ToList();
+                    List<KarZararUrunu> karzararlar = new List<KarZararUrunu>();
+                    foreach (Fi item in fisler)
+                    {
+                        foreach (Sati _item in item.Satis)
+                        {
+                            decimal toplamMaliyet = (decimal)(_item.Adet * _item.AdetAlisFiyati);
+                            decimal toplamTutar = (decimal)_item.ToplamFiyat;
+                            decimal toplamkar = toplamTutar - toplamMaliyet;
+                            KarZararUrunu kazar = new KarZararUrunu
+                            {
+
+                                Satis = _item,
+                                ToplamKar = toplamkar
+                            };
+                            karzararlar.Add(kazar);
+                        }
+                    }
+                    return karzararlar;
+
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            return null;
+        }
+
         #endregion
+
 
         #region Iade İşlemleri
         public bool IadeKaydet(int urunid, int adet, int musteriid, decimal birimFiyat, decimal tutar, string aciklama)

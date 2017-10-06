@@ -101,6 +101,7 @@
             this.btnIptal.Size = new System.Drawing.Size(97, 32);
             this.btnIptal.TabIndex = 5;
             this.btnIptal.Text = "İptal";
+            this.btnIptal.Click += new System.EventHandler(this.btnIptal_Click);
             // 
             // frmKarZararTarihSecim
             // 
@@ -117,6 +118,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmKarZararTarihSecim";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tarih Seçin";
             this.Load += new System.EventHandler(this.frmKarZararTarihSecim_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtIlkTarih.CalendarTimeProperties)).EndInit();

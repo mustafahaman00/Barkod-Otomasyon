@@ -14,17 +14,16 @@ namespace Barkod_Otomasyon
 {
     public partial class frmKarZararUrunleri : DevExpress.XtraEditors.XtraForm
     {
-        public string Baslik = "";
         List<KarZararUrunu> liste;
-        public frmKarZararUrunleri(List<KarZararUrunu> _liste)
+        public frmKarZararUrunleri(List<KarZararUrunu> _liste,string baslik)
         {
             liste = _liste;
+            this.Text = baslik;
             InitializeComponent();
         }
 
         private void frmKarZararUrunleri_Load(object sender, EventArgs e)
         {
-            this.Text = Baslik;
             if (liste != null)
             {
                 gridControl1.DataSource = liste;

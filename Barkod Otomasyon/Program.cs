@@ -22,7 +22,14 @@ namespace Barkod_Otomasyon
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-            Application.Run(new frmMain());
+
+            frmKullaniciGiris frm = new frmKullaniciGiris();
+            Application.Run(frm);
+            if (User.kullanici != null)
+            {
+Application.Run(new frmMain());
+            }
+            
         }
     }
 }

@@ -40,5 +40,10 @@ namespace Barkod_Otomasyon
                 MessageBox.Show("İlk tarih son tarihten büyük olamaz", "Hata");
             }
         }
+
+        private void btnIptal_Click(object sender, EventArgs e)
+        {
+            DevamEt = false; this.Close();
+        }
     }
 }
