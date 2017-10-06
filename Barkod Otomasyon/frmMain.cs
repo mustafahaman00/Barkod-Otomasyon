@@ -164,11 +164,6 @@ namespace Barkod_Otomasyon
         }
         private void YuklenmeDurumu()
         {
-
-            using (Barkod_Otomasyon.Models.FdkBarkodOtomasyonContext db = new Models.FdkBarkodOtomasyonContext())
-            {
-                User.kullanici = db.Kullanicis.FirstOrDefault(x => x.KullaniciAdi == "dkadem");
-            }
         }
 
 

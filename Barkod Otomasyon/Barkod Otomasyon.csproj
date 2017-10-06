@@ -190,6 +190,12 @@
     <Compile Include="frmKategoriler.Designer.cs">
       <DependentUpon>frmKategoriler.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmKullaniciGiris.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKullaniciGiris.Designer.cs">
+      <DependentUpon>frmKullaniciGiris.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmKullanicilar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -335,6 +341,9 @@
     <EmbeddedResource Include="frmKategoriler.resx">
       <DependentUpon>frmKategoriler.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmKullaniciGiris.resx">
+      <DependentUpon>frmKullaniciGiris.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmKullanicilar.resx">
       <DependentUpon>frmKullanicilar.cs</DependentUpon>
     </EmbeddedResource>
@@ -420,6 +429,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

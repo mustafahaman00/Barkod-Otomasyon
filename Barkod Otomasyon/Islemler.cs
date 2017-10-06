@@ -601,6 +601,20 @@ namespace Barkod_Otomasyon
                 return false;
             }
         }
+
+
+        public Kullanici KullaniciGiris(string kullaniciadi, string parola)
+        {
+            try
+            {
+                Kullanici user = db.Kullanicis.FirstOrDefault(x => x.KullaniciAdi == kullaniciadi && x.Parola == parola);
+                return user;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         #endregion
 
         #region Fiş İşlemleri
