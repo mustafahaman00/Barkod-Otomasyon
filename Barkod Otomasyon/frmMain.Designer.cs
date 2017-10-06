@@ -67,7 +67,6 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuCikis = new System.Windows.Forms.ToolStripMenuItem();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.ürünToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUrunEkle = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUrunListele = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,6 +93,7 @@
             this.mnuAySonuAnalizi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTarihBazliAnaliz = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuKullaniciBazliAnaliz = new System.Windows.Forms.ToolStripMenuItem();
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
@@ -428,22 +428,18 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(96, 6);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(96, 6);
             // 
             // mnuCikis
             // 
             this.mnuCikis.Name = "mnuCikis";
-            this.mnuCikis.Size = new System.Drawing.Size(152, 22);
+            this.mnuCikis.Size = new System.Drawing.Size(99, 22);
             this.mnuCikis.Text = "&Çıkış";
-            // 
-            // xtraTabbedMdiManager1
-            // 
-            this.xtraTabbedMdiManager1.MdiParent = this;
             // 
             // ürünToolStripMenuItem
             // 
@@ -477,7 +473,7 @@
             // mnuKategoriler
             // 
             this.mnuKategoriler.Name = "mnuKategoriler";
-            this.mnuKategoriler.Size = new System.Drawing.Size(152, 22);
+            this.mnuKategoriler.Size = new System.Drawing.Size(131, 22);
             this.mnuKategoriler.Text = "Kategoriler";
             // 
             // müşteriToolStripMenuItem
@@ -512,7 +508,7 @@
             // mnuTedarikciler
             // 
             this.mnuTedarikciler.Name = "mnuTedarikciler";
-            this.mnuTedarikciler.Size = new System.Drawing.Size(152, 22);
+            this.mnuTedarikciler.Size = new System.Drawing.Size(135, 22);
             this.mnuTedarikciler.Text = "Tedarikçiler";
             // 
             // satışToolStripMenuItem
@@ -625,6 +621,10 @@
             this.mnuKullaniciBazliAnaliz.Name = "mnuKullaniciBazliAnaliz";
             this.mnuKullaniciBazliAnaliz.Size = new System.Drawing.Size(181, 22);
             this.mnuKullaniciBazliAnaliz.Text = "Kullanıcı Bazlı Analiz";
+            // 
+            // xtraTabbedMdiManager1
+            // 
+            this.xtraTabbedMdiManager1.MdiParent = this;
             // 
             // frmMain
             // 
