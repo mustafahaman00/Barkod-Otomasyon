@@ -22,7 +22,15 @@ namespace Barkod_Otomasyon
             InitializeComponent();
         }
         #region Genel Methotlar
-
+        void CikisYap()
+        {
+            DialogResult sonuc = MessageBox.Show("Uygulamadan çıkış yapmak istediğinize emin misiniz?"
+                , "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (sonuc == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
         private void FiyatGoster()
         {
             frmFiyatOgren frm = new frmFiyatOgren();
@@ -165,13 +173,6 @@ namespace Barkod_Otomasyon
 
 
         #endregion
-
-
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            YuklenmeDurumu();
-        }
 
         #region Eventlar
 
@@ -403,6 +404,116 @@ namespace Barkod_Otomasyon
 
         #endregion
 
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            YuklenmeDurumu();
+        }
 
+
+        #region Menu Islemleri
+
+
+
+        private void mnuCikis_Click(object sender, EventArgs e)
+        {
+            CikisYap();
+        }
+
+        private void mnuUrunEkle_Click(object sender, EventArgs e)
+        {
+            UrunEkle();
+        }
+
+        private void mnuUrunListele_Click(object sender, EventArgs e)
+        {
+            UrunleriGoster();
+        }
+
+        private void mnuKategoriler_Click(object sender, EventArgs e)
+        {
+            KategorileriGoster();
+        }
+
+        private void mnuMusteriEkle_Click(object sender, EventArgs e)
+        {
+            MusterileriGoster();
+        }
+
+        private void mnuMusteriBorclari_Click(object sender, EventArgs e)
+        {
+            BorcTahsilat();
+        }
+
+        private void mnuTedarikciler_Click(object sender, EventArgs e)
+        {
+            TedarikcileriGoster();
+        }
+
+        private void satışToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuFiyatGoster_Click(object sender, EventArgs e)
+        {
+            FiyatGoster();
+        }
+
+        private void mnuSatisYap_Click(object sender, EventArgs e)
+        {
+            SatisYap();
+        }
+
+        private void mnuKendiSatislarim_Click(object sender, EventArgs e)
+        {
+            SatislarimiGoster();
+        }
+
+        private void mnuGenelSatislar_Click(object sender, EventArgs e)
+        {
+            GenelSatislariGoster();
+        }
+
+        private void ıadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuIadeOlustur_Click(object sender, EventArgs e)
+        {
+            IadeIslemiYap();
+        }
+
+        private void mnuIadeleriGoruntule_Click(object sender, EventArgs e)
+        {
+            IadeleriGoster();
+        }
+
+        private void mnuKullanicilar_Click(object sender, EventArgs e)
+        {
+            KullanicilariGoster();
+        }
+
+        private void mnuGunSonuAnalizi_Click(object sender, EventArgs e)
+        {
+            GunlukAnaliziGoster();
+        }
+
+        private void mnuAySonuAnalizi_Click(object sender, EventArgs e)
+        {
+            AylikAnaliziGoster();
+        }
+
+        private void mnuTarihBazliAnaliz_Click(object sender, EventArgs e)
+        {
+            TarihBazliAnalizGoster();
+        }
+
+        private void mnuKullaniciBazliAnaliz_Click(object sender, EventArgs e)
+        {
+            KullaniciBazliAnalizGoster();
+        }
+
+        #endregion
     }
 }

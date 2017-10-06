@@ -205,7 +205,7 @@
             // 
             // btnIadeIslemi
             // 
-            this.btnIadeIslemi.Caption = "Iade İşlemi";
+            this.btnIadeIslemi.Caption = "Iade İşlemi ( F9 )";
             this.btnIadeIslemi.Glyph = ((System.Drawing.Image)(resources.GetObject("btnIadeIslemi.Glyph")));
             this.btnIadeIslemi.Id = 7;
             this.btnIadeIslemi.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnIadeIslemi.LargeGlyph")));
@@ -428,18 +428,20 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(96, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(96, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuCikis
             // 
             this.mnuCikis.Name = "mnuCikis";
-            this.mnuCikis.Size = new System.Drawing.Size(99, 22);
+            this.mnuCikis.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.mnuCikis.Size = new System.Drawing.Size(152, 22);
             this.mnuCikis.Text = "&Çıkış";
+            this.mnuCikis.Click += new System.EventHandler(this.mnuCikis_Click);
             // 
             // ürünToolStripMenuItem
             // 
@@ -455,12 +457,14 @@
             this.mnuUrunEkle.Name = "mnuUrunEkle";
             this.mnuUrunEkle.Size = new System.Drawing.Size(152, 22);
             this.mnuUrunEkle.Text = "Ürün Ekle";
+            this.mnuUrunEkle.Click += new System.EventHandler(this.mnuUrunEkle_Click);
             // 
             // mnuUrunListele
             // 
             this.mnuUrunListele.Name = "mnuUrunListele";
             this.mnuUrunListele.Size = new System.Drawing.Size(152, 22);
             this.mnuUrunListele.Text = "Ürünleri Listele";
+            this.mnuUrunListele.Click += new System.EventHandler(this.mnuUrunListele_Click);
             // 
             // kategoriToolStripMenuItem
             // 
@@ -475,6 +479,7 @@
             this.mnuKategoriler.Name = "mnuKategoriler";
             this.mnuKategoriler.Size = new System.Drawing.Size(131, 22);
             this.mnuKategoriler.Text = "Kategoriler";
+            this.mnuKategoriler.Click += new System.EventHandler(this.mnuKategoriler_Click);
             // 
             // müşteriToolStripMenuItem
             // 
@@ -490,12 +495,14 @@
             this.mnuMusteriEkle.Name = "mnuMusteriEkle";
             this.mnuMusteriEkle.Size = new System.Drawing.Size(157, 22);
             this.mnuMusteriEkle.Text = "Müşteri Ekle";
+            this.mnuMusteriEkle.Click += new System.EventHandler(this.mnuMusteriEkle_Click);
             // 
             // mnuMusteriBorclari
             // 
             this.mnuMusteriBorclari.Name = "mnuMusteriBorclari";
             this.mnuMusteriBorclari.Size = new System.Drawing.Size(157, 22);
             this.mnuMusteriBorclari.Text = "Müşteri Borçları";
+            this.mnuMusteriBorclari.Click += new System.EventHandler(this.mnuMusteriBorclari_Click);
             // 
             // tedarikçiToolStripMenuItem
             // 
@@ -508,8 +515,9 @@
             // mnuTedarikciler
             // 
             this.mnuTedarikciler.Name = "mnuTedarikciler";
-            this.mnuTedarikciler.Size = new System.Drawing.Size(135, 22);
+            this.mnuTedarikciler.Size = new System.Drawing.Size(152, 22);
             this.mnuTedarikciler.Text = "Tedarikçiler";
+            this.mnuTedarikciler.Click += new System.EventHandler(this.mnuTedarikciler_Click);
             // 
             // satışToolStripMenuItem
             // 
@@ -519,18 +527,23 @@
             this.satışToolStripMenuItem.Name = "satışToolStripMenuItem";
             this.satışToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.satışToolStripMenuItem.Text = "Satış";
+            this.satışToolStripMenuItem.Click += new System.EventHandler(this.satışToolStripMenuItem_Click);
             // 
             // mnuFiyatGoster
             // 
             this.mnuFiyatGoster.Name = "mnuFiyatGoster";
-            this.mnuFiyatGoster.Size = new System.Drawing.Size(155, 22);
+            this.mnuFiyatGoster.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.mnuFiyatGoster.Size = new System.Drawing.Size(174, 22);
             this.mnuFiyatGoster.Text = "Fiyat Görüntüle";
+            this.mnuFiyatGoster.Click += new System.EventHandler(this.mnuFiyatGoster_Click);
             // 
             // mnuSatisYap
             // 
             this.mnuSatisYap.Name = "mnuSatisYap";
-            this.mnuSatisYap.Size = new System.Drawing.Size(155, 22);
+            this.mnuSatisYap.ShortcutKeys = System.Windows.Forms.Keys.F4;
+            this.mnuSatisYap.Size = new System.Drawing.Size(174, 22);
             this.mnuSatisYap.Text = "Satış Yap";
+            this.mnuSatisYap.Click += new System.EventHandler(this.mnuSatisYap_Click);
             // 
             // satışlarToolStripMenuItem
             // 
@@ -546,12 +559,14 @@
             this.mnuKendiSatislarim.Name = "mnuKendiSatislarim";
             this.mnuKendiSatislarim.Size = new System.Drawing.Size(158, 22);
             this.mnuKendiSatislarim.Text = "Kendi Satışlarım";
+            this.mnuKendiSatislarim.Click += new System.EventHandler(this.mnuKendiSatislarim_Click);
             // 
             // mnuGenelSatislar
             // 
             this.mnuGenelSatislar.Name = "mnuGenelSatislar";
             this.mnuGenelSatislar.Size = new System.Drawing.Size(158, 22);
             this.mnuGenelSatislar.Text = "Genel Satışlar";
+            this.mnuGenelSatislar.Click += new System.EventHandler(this.mnuGenelSatislar_Click);
             // 
             // ıadeToolStripMenuItem
             // 
@@ -561,18 +576,23 @@
             this.ıadeToolStripMenuItem.Name = "ıadeToolStripMenuItem";
             this.ıadeToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.ıadeToolStripMenuItem.Text = "Iade";
+            this.ıadeToolStripMenuItem.Click += new System.EventHandler(this.ıadeToolStripMenuItem_Click);
             // 
             // mnuIadeOlustur
             // 
             this.mnuIadeOlustur.Name = "mnuIadeOlustur";
+            this.mnuIadeOlustur.ShortcutKeyDisplayString = "";
+            this.mnuIadeOlustur.ShortcutKeys = System.Windows.Forms.Keys.F9;
             this.mnuIadeOlustur.Size = new System.Drawing.Size(168, 22);
             this.mnuIadeOlustur.Text = "İade Oluştur";
+            this.mnuIadeOlustur.Click += new System.EventHandler(this.mnuIadeOlustur_Click);
             // 
             // mnuIadeleriGoruntule
             // 
             this.mnuIadeleriGoruntule.Name = "mnuIadeleriGoruntule";
             this.mnuIadeleriGoruntule.Size = new System.Drawing.Size(168, 22);
             this.mnuIadeleriGoruntule.Text = "Iadeleri Görüntüle";
+            this.mnuIadeleriGoruntule.Click += new System.EventHandler(this.mnuIadeleriGoruntule_Click);
             // 
             // yönetimToolStripMenuItem
             // 
@@ -592,6 +612,7 @@
             this.mnuKullanicilar.Name = "mnuKullanicilar";
             this.mnuKullanicilar.Size = new System.Drawing.Size(181, 22);
             this.mnuKullanicilar.Text = "Kullanıcılar";
+            this.mnuKullanicilar.Click += new System.EventHandler(this.mnuKullanicilar_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -603,24 +624,28 @@
             this.mnuGunSonuAnalizi.Name = "mnuGunSonuAnalizi";
             this.mnuGunSonuAnalizi.Size = new System.Drawing.Size(181, 22);
             this.mnuGunSonuAnalizi.Text = "Gün Sonu Analizi";
+            this.mnuGunSonuAnalizi.Click += new System.EventHandler(this.mnuGunSonuAnalizi_Click);
             // 
             // mnuAySonuAnalizi
             // 
             this.mnuAySonuAnalizi.Name = "mnuAySonuAnalizi";
             this.mnuAySonuAnalizi.Size = new System.Drawing.Size(181, 22);
             this.mnuAySonuAnalizi.Text = "Ay Sonu Analizi";
+            this.mnuAySonuAnalizi.Click += new System.EventHandler(this.mnuAySonuAnalizi_Click);
             // 
             // mnuTarihBazliAnaliz
             // 
             this.mnuTarihBazliAnaliz.Name = "mnuTarihBazliAnaliz";
             this.mnuTarihBazliAnaliz.Size = new System.Drawing.Size(181, 22);
             this.mnuTarihBazliAnaliz.Text = "Tarih Bazlı Analiz";
+            this.mnuTarihBazliAnaliz.Click += new System.EventHandler(this.mnuTarihBazliAnaliz_Click);
             // 
             // mnuKullaniciBazliAnaliz
             // 
             this.mnuKullaniciBazliAnaliz.Name = "mnuKullaniciBazliAnaliz";
             this.mnuKullaniciBazliAnaliz.Size = new System.Drawing.Size(181, 22);
             this.mnuKullaniciBazliAnaliz.Text = "Kullanıcı Bazlı Analiz";
+            this.mnuKullaniciBazliAnaliz.Click += new System.EventHandler(this.mnuKullaniciBazliAnaliz_Click);
             // 
             // xtraTabbedMdiManager1
             // 
